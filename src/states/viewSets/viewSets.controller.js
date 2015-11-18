@@ -4,14 +4,14 @@ angular.module('know')
 
 .controller('ViewSetsCtrl', ViewSetsCtrl);
 
-ViewSetsCtrl.$inject = ['$state'];
+ViewSetsCtrl.$inject = ['$state', 'Flashcard'];
 
-function ViewSetsCtrl($state) {
+function ViewSetsCtrl($state, Flashcard) {
 
   let vmViewSets = this;
 
 
   vmViewSets.stateName = $state.current.name;
-  // console.log(vmViewSets.stateName);
+  vmViewSets.sets = Flashcard.get();
 
 }

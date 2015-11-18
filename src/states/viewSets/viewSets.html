@@ -1,10 +1,20 @@
 <div class='bar bar-header'>
-  <know-header-button text='View' current-state='vmViewSets.stateName' route-to='viewSets'></know-header-button>
+  <know-header-button text-decoration='underlined' text='View' current-state='vmViewSets.stateName' route-to='viewSets'></know-header-button>
   <div class='h1 title'>know</div>
   <know-header-button text='Add' current-state='vmViewSets.stateName' route-to='createSet' class='header-button-right'></know-header-button>
 </div>
 <ion-view>
   <ion-content class='has-header'>
-    <h1>View Sets</h1>
+    <ul class='list'>
+      <li class='item' ng-repeat='(setTitle, data) in vmViewSets.sets'>
+        <div class='row'>
+          <div class='h2 inline col col-80'>{{setTitle}}</div>
+          <div class='h2 no-margin-top inline col col-20'>{{data.cards.length}}</div>
+        </div>
+        <div class='row'>
+          <span ng-repeat='tag in data.tags'>-{{tag}}-</span>
+        </div>
+      </li>
+    </ul>
   </ion-content>
 </ion-view>

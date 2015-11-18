@@ -1,0 +1,31 @@
+<div class='bar bar-header'>
+  <know-header-button text='View' current-state='vmCreateSet.stateName' route-to='viewSets'></know-header-button>
+  <div class='h1 title'>know</div>
+  <know-header-button text='Add' current-state='vmCreateSet.stateName' route-to='createSet' class='header-button-right'></know-header-button>
+</div>
+<ion-view>
+  <ion-content class='has-header'>
+
+    <!-- <form ng-submit='vmCreateSet.createSet()' class='text-center'>
+      <input type='text' class='text-center' placeholder='Flashcard Set Title' ng-model='vmCreateSet.set.title'>
+      <input type='text' placeholder='Tags, i.e.: Sports, Baseball, History' ng-model='vmCreateSet.set.tags'>
+      <button type='submit' class='button button-clear button-balanced'>Start</button>
+    </form> -->
+
+    <form class="list" ng-submit='vmCreateSet.createSet(vmCreateSet.set)'>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Flashcard Set Title</span>
+        <input type="text" ng-model='vmCreateSet.set.title' placeholder="John">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Tags</span>
+        <input type="text" ng-model='vmCreateSet.set.tags' placeholder="Sports, Baseball, History">
+      </label>
+      <div class='text-center'>
+        <button type='submit' class='button button-clear button-balanced'>Start</button>
+      </div>
+    </form>
+
+
+  </ion-content>
+</ion-view>

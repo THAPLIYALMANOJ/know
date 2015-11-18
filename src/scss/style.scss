@@ -1,0 +1,27 @@
+.title {
+  color: tomato !important;
+  font-size: 27px !important;
+}
+
+.button-font {
+  font-size: 2em;
+  font-weight: 200;
+}
+
+.header-button-right {
+  position: absolute;
+  right: 5px;
+}
+
+/* HOME.HTML */
+
+.home-buttons-container {
+  margin-top: 50%;
+
+  button {
+    padding: 0;
+    margin-bottom: 30%;
+  }
+}
+
+/* END OF HOME.HTML */

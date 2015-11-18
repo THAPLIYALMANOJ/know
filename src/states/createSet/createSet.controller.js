@@ -14,10 +14,11 @@ function CreateSetCtrl($state, Flashcard) {
   vmCreateSet.createSet = createSet;
 
 
-
+  // THIS NEEDS TO MAKE SURE THERE ARE NO OTHER SETS WITH THE SAME TITLE
   function createSet(setData) {
     Flashcard.addSet(createSetObject(setData));
     vmCreateSet.set = {};
+    $state.go('editSet', {setTitle: setData.title});
   }
 
   function createSetObject(set) {

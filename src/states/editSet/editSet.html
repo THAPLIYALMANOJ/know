@@ -1,0 +1,39 @@
+<div class='bar bar-header'>
+  <div class='h4'>{{vmEditSet.set.cards.length}} cards</div>
+  <div class='h1 title'>{{vmEditSet.setTitle}}</div>
+  <button class='button button-clear button-dark' ng-click='vmEditSet.save(vmEditSet.set)'>Save</button>
+</div>
+
+<ion-view>
+  <ion-content class='has-header'>
+    <div class='card' ng-repeat='card in vmEditSet.set.cards'>
+      <div class='item item-text-wrap'>
+        <textarea class='text-center full-width no-resize' rows='3' placeholder='Question' ng-model='card.question'></textarea>
+        <br>
+        <textarea class='text-center full-width no-resize' rows='3' placeholder='Answer' ng-model='card.answer'></textarea>
+      </div>
+    </div>
+
+    <!-- <div class='card' ng-if='!vmEditSet.set.cards.length'>
+      <div class='item item-text-wrap'>
+        <input type='text' class='text-center full-width' placeholder='Question' ng-model='vmEditSet.newCard.question'>
+        <input type='text' class='text-center full-width' placeholder='Answer' ng-model='vmEditSet.newCard.answer'>
+      </div>
+    </div> -->
+
+    <!-- <div class='bar bar-footer'>
+      <button class='button button-clear button-positive center' ng-click='vmEditSet.makeNewCard()'>
+        New Card
+      </button>
+    </div> -->
+
+    <footer class='row'>
+    <div class='col col-100 text-center'>
+      <button id='new-card' class='button button-clear button-positive text-center' ng-click='vmEditSet.makeNewCard()'>
+        New Card
+      </button>
+    </div>
+    </footer>
+
+  </ion-content>
+</ion-view>

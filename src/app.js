@@ -42,6 +42,12 @@ angular.module('know', ['ionic'])
     controller: 'ViewSetsCtrl as vmViewSets'
   })
 
+  .state('editSet', {
+    url: '/editSet/:setTitle',
+    templateUrl: 'states/editSet/editset.html',
+    controller: 'EditSetCtrl as vmEditSet'
+  });
+
   $urlRouterProvider.otherwise('/');
 
 });

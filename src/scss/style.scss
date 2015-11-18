@@ -1,6 +1,19 @@
+footer {
+  //top: 80%;
+  //position: fixed;
+}
+
 .title {
   color: tomato !important;
   font-size: 27px !important;
+}
+
+.no-resize {
+  resize: none;
+}
+
+.center {
+  margin: 0 auto;
 }
 
 .no-margin-top {
@@ -9,6 +22,10 @@
 
 .underlined {
   text-decoration: underline;
+}
+
+.full-width {
+  width: 100%;
 }
 
 .button-font {
@@ -33,3 +50,7 @@
 }
 
 /* END OF HOME.HTML */
+
+#new-card {
+  margin-bottom: 20px;
+}

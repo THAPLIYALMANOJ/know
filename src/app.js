@@ -46,6 +46,12 @@ angular.module('know', ['ionic'])
     url: '/editSet/:setTitle',
     templateUrl: 'states/editSet/editset.html',
     controller: 'EditSetCtrl as vmEditSet'
+  })
+
+  .state('viewCards', {
+    url: '/cards/:setTitle',
+    templateUrl: 'states/viewCards/viewCards.html',
+    controller: 'ViewCardsCtrl as vmViewCards'
   });
 
   $urlRouterProvider.otherwise('/');

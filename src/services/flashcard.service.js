@@ -51,7 +51,15 @@ function Flashcard($window) {
 
   // for use when user starts creating a new set
   function addSet(set) {
-    Object.assign(flashcards, set);
+    // Object.assign(flashcards, set);    // Doesn't work on mobile
+
+    // have to use Object.defineProperty() instead of Object.assign()
+    Object.defineProperty(flashcards, Object.keys(set)[0], {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: set[Object.keys(set)[0]]
+    });
     saveToLocalStorage(flashcards);
   }
 

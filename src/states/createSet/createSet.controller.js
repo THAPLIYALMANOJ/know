@@ -16,7 +16,6 @@ function CreateSetCtrl($state, Flashcard) {
   vmCreateSet.badTitle = false;
 
 
-  // THIS NEEDS TO MAKE SURE THERE ARE NO OTHER SETS WITH THE SAME TITLE
   function createSet(setData, isValid) {
     Flashcard.addSet(createSetObject(setData));
     vmCreateSet.set = {};

@@ -6,26 +6,25 @@
 <ion-view>
   <ion-content class='has-header'>
 
-    <!-- <form ng-submit='vmCreateSet.createSet()' class='text-center'>
-      <input type='text' class='text-center' placeholder='Flashcard Set Title' ng-model='vmCreateSet.set.title'>
-      <input type='text' placeholder='Tags, i.e.: Sports, Baseball, History' ng-model='vmCreateSet.set.tags'>
-      <button type='submit' class='button button-clear button-balanced'>Start</button>
-    </form> -->
+    <h2 class='text-center font-thin' style='margin-top: 2em;'>Create Flashcard Set</h2>
 
-    <form class="list" ng-submit='vmCreateSet.createSet(vmCreateSet.set)'>
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">Flashcard Set Title</span>
-        <input type="text" ng-model='vmCreateSet.set.title' placeholder="John">
-      </label>
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">Tags</span>
-        <input type="text" ng-model='vmCreateSet.set.tags' placeholder="Sports, Baseball, History">
-      </label>
-      <div class='text-center'>
-        <button type='submit' class='button button-clear button-balanced'>Start</button>
+    <form name='newSet' ng-submit='vmCreateSet.createSet(vmCreateSet.set)' class='text-center col col-80 col-offset-10' novalidate>
+      <div class='new-set-input'>
+        <input type='text' name='title' class='text-center col col-100' placeholder='Flashcard Set Title' ng-model='vmCreateSet.set.title' ng-change='vmCreateSet.validateTitle(vmCreateSet.set.title)' autocomplete='off' required>
+        <div style='height: 20px;'>
+          <p ng-show='vmCreateSet.badTitle' class='red-color'>
+            Title already exists!
+          </p>
+        </div>
       </div>
+      <div class='new-set-input'>
+        <input type='text' name='tags' class='text-center col col-100' placeholder='Tags, i.e.: Sports, Baseball, History' ng-model='vmCreateSet.set.tags' ng-minlength='3' autocomplete='off' required>
+      </div>
+      <button type='submit' id='start-button' class='button button-clear button-balanced button-large' style='margin-top: 2em;' ng-disabled='newSet.$invalid || vmCreateSet.badTitle'>
+        Start
+      </button>
+    </div>
     </form>
-
 
   </ion-content>
 </ion-view>

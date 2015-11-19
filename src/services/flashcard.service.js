@@ -12,14 +12,14 @@ function Flashcard($window) {
 
   // {
   //   setTitle: {
-  //     tags: '',
+  //     tags: [],
   //     cards: [
   //       { question: '', answer: ''},
   //       { question: '', answer: ''}
   //     ]
   //   },
   //   setTitle: {
-  //     tags: '',
+  //     tags: [],
   //     cards: [
   //       { question: '', answer: ''},
   //       { question: '', answer: ''}

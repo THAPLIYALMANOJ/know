@@ -1,5 +1,6 @@
 <div class='bar bar-header'>
-  <div class='h4'>{{vmEditSet.set.cards.length}} cards</div>
+  <!-- <div class='h4'>{{vmEditSet.set.cards.length}} cards</div> -->
+  <button class='button button-clear button-dark' ng-click='vmEditSet.deleteSet(vmEditSet.setTitle)'>Delete</button>
   <div class='h1 title'>{{vmEditSet.setTitle}}</div>
   <button class='button button-clear button-dark' ng-click='vmEditSet.save(vmEditSet.set)'>Save</button>
 </div>
@@ -8,6 +9,7 @@
   <ion-content class='has-header'>
     <div class='card' ng-repeat='card in vmEditSet.set.cards'>
       <div class='item item-text-wrap'>
+        <i class='icon ion-close float-right' ng-click='vmEditSet.deleteCard($index)'></i>
         <textarea class='text-center full-width no-resize' rows='3' placeholder='Question' ng-model='card.question'></textarea>
         <br>
         <textarea class='text-center full-width no-resize' rows='3' placeholder='Answer' ng-model='card.answer'></textarea>

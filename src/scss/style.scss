@@ -12,8 +12,20 @@
   color: gray;
 }
 
+.red-color {
+  color: red;
+}
+
+.red-border {
+  border: 1px solid red;
+}
+
 .float-right {
   float: right;
+}
+
+.font-thin {
+  font-weight: 200;
 }
 
 .center {
@@ -68,8 +80,17 @@
 
 /* END OF HOME.HTML */
 
+#start-button {
+  font-size: 2.1em;
+  font-weight: 200;
+}
+
 #new-card {
   margin-bottom: 20px;
+}
+
+.new-set-input {
+  margin-top: 2em;
 }
 
 .view-card {

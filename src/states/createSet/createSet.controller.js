@@ -12,10 +12,12 @@ function CreateSetCtrl($state, Flashcard) {
 
   vmCreateSet.stateName = $state.current.name;
   vmCreateSet.createSet = createSet;
+  vmCreateSet.validateTitle = validateTitle;
+  vmCreateSet.badTitle = false;
 
 
   // THIS NEEDS TO MAKE SURE THERE ARE NO OTHER SETS WITH THE SAME TITLE
-  function createSet(setData) {
+  function createSet(setData, isValid) {
     Flashcard.addSet(createSetObject(setData));
     vmCreateSet.set = {};
     $state.go('editSet', {setTitle: setData.title});
@@ -28,6 +30,14 @@ function CreateSetCtrl($state, Flashcard) {
         cards: []
       }
     };
+  }
+
+  function validateTitle(title) {
+    let flashcards = Flashcard.get();
+    for (var flashTitle in flashcards) {
+      if (flashTitle === title) return vmCreateSet.badTitle = true;
+    }
+    vmCreateSet.badTitle = false;
   }
 
 }

@@ -16,6 +16,7 @@ function ViewCardsCtrl($stateParams, Flashcard) {
   vmViewCards.cardIndex = 0;
   vmViewCards.flip = () => vmViewCards.questionFacing = !vmViewCards.questionFacing;
   vmViewCards.next = next;
+  vmViewCards.randomize = randomize;
 
 
 
@@ -25,6 +26,17 @@ function ViewCardsCtrl($stateParams, Flashcard) {
     else
       vmViewCards.cardIndex = 0;
     vmViewCards.questionFacing = true;
+  }
+
+  function randomize() {
+    let num, tempArr = [], length = vmViewCards.cards.length;
+    for (var i=0; i<length; i++) {
+      num = Math.floor(Math.random() * vmViewCards.cards.length);
+      tempArr.push(vmViewCards.cards[num]);
+      vmViewCards.cards.splice(num,1);
+    }
+    vmViewCards.cards = tempArr;
+    console.log(vmViewCards.cards);
   }
 
 

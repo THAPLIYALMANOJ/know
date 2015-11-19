@@ -1,7 +1,7 @@
 <div class='bar bar-header'>
   <know-header-button text='View' current-state='vmViewCards.stateName' route-to='viewSets'></know-header-button>
   <div class='h1 title'>{{vmViewCards.setTitle}}</div>
-  <know-header-button text='Add' current-state='vmViewCards.stateName' route-to='createSet' class='header-button-right'></know-header-button>
+  <button class='button button-clear button-dark' ng-click='vmViewCards.randomize()'>Randomize</button>
 </div>
 
 <ion-view>

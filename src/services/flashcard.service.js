@@ -46,20 +46,14 @@ function Flashcard($window) {
 
   // for use when user is navigating to show set view
   function getSet(setTitle) {
-    return flashcards[setTitle];
+    return angular.copy(flashcards[setTitle]);
   }
 
   // for use when user starts creating a new set
   function addSet(set) {
     // Object.assign(flashcards, set);    // Doesn't work on mobile
-
-    // have to use Object.defineProperty() instead of Object.assign()
-    Object.defineProperty(flashcards, Object.keys(set)[0], {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: set[Object.keys(set)[0]]
-    });
+    // have to use this way instead of Object.assign()
+    flashcards[Object.keys(set)[0]] = set[Object.keys(set)[0]]
     saveToLocalStorage(flashcards);
   }
 

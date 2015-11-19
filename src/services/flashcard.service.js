@@ -51,11 +51,8 @@ function Flashcard($window) {
 
   // for use when user starts creating a new set
   function addSet(set) {
-    // flashcards = set;
-    console.log('set', set);
     Object.assign(flashcards, set);
     saveToLocalStorage(flashcards);
-    console.log(flashcards);
   }
 
   // for use when application starts to get cards out of LocalStorage

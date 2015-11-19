@@ -1,8 +1,7 @@
 <div class='bar bar-header'>
-  <!-- <div class='h4'>{{vmEditSet.set.cards.length}} cards</div> -->
-  <button class='button button-clear button-dark' ng-click='vmEditSet.deleteSet(vmEditSet.setTitle)'>Delete</button>
-  <div class='h1 title'>{{vmEditSet.setTitle}}</div>
   <button class='button button-clear button-dark' ng-click='vmEditSet.save(vmEditSet.set)'>Save</button>
+  <div class='h1 title'>{{vmEditSet.setTitle}}</div>
+  <button class='button button-clear button-dark' ng-click='vmEditSet.deleteSet(vmEditSet.setTitle)'>Delete</button>
 </div>
 
 <ion-view>
@@ -17,19 +16,6 @@
     </div>
 
     <!-- NEED TO BE ABLE TO RE-ARRANGE CARDS TOO HERE IN EDIT VIEW -->
-
-    <!-- <div class='card' ng-if='!vmEditSet.set.cards.length'>
-      <div class='item item-text-wrap'>
-        <input type='text' class='text-center full-width' placeholder='Question' ng-model='vmEditSet.newCard.question'>
-        <input type='text' class='text-center full-width' placeholder='Answer' ng-model='vmEditSet.newCard.answer'>
-      </div>
-    </div> -->
-
-    <!-- <div class='bar bar-footer'>
-      <button class='button button-clear button-positive center' ng-click='vmEditSet.makeNewCard()'>
-        New Card
-      </button>
-    </div> -->
 
     <footer class='row'>
     <div class='col col-100 text-center'>

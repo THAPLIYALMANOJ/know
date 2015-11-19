@@ -15,7 +15,7 @@ function EditSetCtrl($state, $stateParams, Flashcard) {
   vmEditSet.makeNewCard = makeNewCard;
   vmEditSet.save = save;
   vmEditSet.deleteSet = deleteSet;
-  vmEditSet.deleteCard = deleteCard;
+  vmEditSet.deleteCard = (index) => vmEditSet.set.cards.splice(index, 1);
 
 
 
@@ -36,11 +36,6 @@ function EditSetCtrl($state, $stateParams, Flashcard) {
   function deleteSet(setTitle) {
     Flashcard.deleteSet(setTitle);
     $state.go('viewSets');
-  }
-
-  function deleteCard(index) {
-    vmEditSet.set.cards.splice(index, 1);
-    // Flashcard.updateSet(vmEditSet.set, vmEditSet.setTitle);
   }
 
 }

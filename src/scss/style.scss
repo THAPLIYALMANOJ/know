@@ -36,17 +36,8 @@
   margin-top: 0 !important;
 }
 
-.flip-next-container {
-  bottom: 10px;
-  position: fixed;
-  margin-left: 0;
-  padding-left: 0;
-  left: 0;
-
-  button {
-    margin-left: 10px;
-    margin-right: 10px;
-  }
+.no-margin {
+  margin: 0;
 }
 
 .underlined {
@@ -93,16 +84,33 @@
   margin-top: 2em;
 }
 
+.flip-next-container {
+  bottom: 10px;
+  position: absolute;
+  margin-left: 0;
+  padding-left: 0;
+  left: 0;
+
+  button {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
 .view-card {
   width: 94%;
   box-shadow: 0 0 2px 1px lightgray;
   text-align: center;
   margin-top: 10px;
   margin-left: 3%;
-  position:fixed;
+  position: absolute;
   top: 0;
-  bottom: 4%;
-  font-size: 2em;
-  line-height: 1.1em;
-  padding: 10% 5% 10% 5%;
+  bottom: 70px;
+  padding: 10px 20px 0px 20px;
+  overflow-y: scroll;
+}
+
+.view-card-content {
+  font-size: 1.6em;
+  line-height: 1.2em;
 }

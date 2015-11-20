@@ -7,22 +7,18 @@
 <ion-view>
   <ion-content class='has-header'>
 
-    <div class='view-card' ng-if='vmViewCards.questionFacing'>
-      <div class='text-left h5 gray-color'>Question:</div>
-      <div>{{vmViewCards.cards[vmViewCards.cardIndex].question}}</div>
-      <div class='col col-100 flip-next-container text-center'>
-        <button class='button button-clear button-positive button-large' ng-click='vmViewCards.flip()'>Flip</button>
-        <button class='button button-clear button-balanced button-large' ng-click='vmViewCards.next()'>Next</button>
+    <div class='view-card'>
+      <div class='col col-100 text-left h5 gray-color no-margin'>
+        {{vmViewCards.side | uppercase}}:
+      </div>
+      <div class='col col-100 view-card-content'>
+        {{vmViewCards.cards[vmViewCards.cardIndex][vmViewCards.side]}}
       </div>
     </div>
 
-    <div class='view-card' ng-if='!vmViewCards.questionFacing'>
-      <div class='text-left h5 gray-color'>Answer:</div>
-      <div>{{vmViewCards.cards[vmViewCards.cardIndex].answer}}</div>
-      <div class='col col-100 flip-next-container text-center'>
-        <button class='button button-clear button-positive button-large' ng-click='vmViewCards.flip()'>Flip</button>
-        <button class='button button-clear button-balanced button-large' ng-click='vmViewCards.next()'>Next</button>
-      </div>
+    <div class='col col-100 flip-next-container text-center'>
+      <button class='button button-clear button-positive button-large' ng-click='vmViewCards.flip()'>Flip</button>
+      <button class='button button-clear button-balanced button-large' ng-click='vmViewCards.next()'>Next</button>
     </div>
 
   </ion-content>

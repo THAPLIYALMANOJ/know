@@ -12,9 +12,9 @@ function ViewCardsCtrl($stateParams, Flashcard) {
 
   vmViewCards.setTitle = $stateParams.setTitle;
   vmViewCards.cards = Flashcard.getSet(vmViewCards.setTitle).cards;
-  vmViewCards.questionFacing = true;
+  vmViewCards.side = 'question';
   vmViewCards.cardIndex = 0;
-  vmViewCards.flip = () => vmViewCards.questionFacing = !vmViewCards.questionFacing;
+  vmViewCards.flip = () => vmViewCards.side = (vmViewCards.side === 'question') ? 'answer' : 'question';
   vmViewCards.next = next;
   vmViewCards.randomize = randomize;
 
@@ -25,7 +25,7 @@ function ViewCardsCtrl($stateParams, Flashcard) {
       vmViewCards.cardIndex++;
     else
       vmViewCards.cardIndex = 0;
-    vmViewCards.questionFacing = true;
+    vmViewCards.side = 'question';
   }
 
   function randomize() {
@@ -36,7 +36,7 @@ function ViewCardsCtrl($stateParams, Flashcard) {
       vmViewCards.cards.splice(num,1);
     }
     vmViewCards.cards = tempArr;
-    console.log(vmViewCards.cards);
+    vmViewCards.side = 'question';
   }
 
 

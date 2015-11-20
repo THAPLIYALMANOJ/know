@@ -13,5 +13,12 @@ function ViewSetsCtrl($state, Flashcard) {
 
   vmViewSets.stateName = $state.current.name;
   vmViewSets.sets = Flashcard.get();
+  vmViewSets.goToCards = goToCards;
+
+
+  function goToCards(setTitle) {
+    if (vmViewSets.sets[setTitle].cards.length)
+      $state.go('viewCards', {setTitle: setTitle});
+  }
 
 }

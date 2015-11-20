@@ -11,7 +11,7 @@
           <div class='col col-10 text-center edit-button' ui-sref='editSet({setTitle: setTitle})'>
             <i class='icon ion-edit'></i>
           </div>
-          <div class='col col-90' ui-sref='viewCards({setTitle: setTitle})'>
+          <div class='col col-90' ng-click='vmViewSets.goToCards(setTitle)'>
             <div class='row'>
               <div class='h2 inline col col-90'>{{setTitle}}</div>
               <div class='h2 no-margin-top inline col col-10'>{{data.cards.length}}</div>

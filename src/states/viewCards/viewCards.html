@@ -18,7 +18,7 @@
 
     <div class='col col-100 flip-next-container text-center'>
       <button class='button button-clear button-positive button-large' ng-click='vmViewCards.flip()'>Flip</button>
-      <button class='button button-clear button-balanced button-large' ng-click='vmViewCards.next()'>Next</button>
+      <button class='button button-clear button-balanced button-large' ng-click='vmViewCards.next()' ng-disabled='vmViewCards.cards.length == 1'>Next</button>
     </div>
 
   </ion-content>

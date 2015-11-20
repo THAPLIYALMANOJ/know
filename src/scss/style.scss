@@ -36,12 +36,24 @@
   margin-top: 0 !important;
 }
 
+.margin-top-med {
+  margin-top: 2em;
+}
+
 .no-margin {
   margin: 0;
 }
 
+.no-padding {
+  padding: 0;
+}
+
 .underlined {
   text-decoration: underline;
+}
+
+.error-message {
+  height: 20px;
 }
 
 .full-width {
@@ -61,11 +73,11 @@
 /* HOME.HTML */
 
 .home-buttons-container {
-  margin-top: 50%;
+  margin-top: 5em;
 
   button {
     padding: 0;
-    margin-bottom: 30%;
+    margin-bottom: 3em;
   }
 }
 
@@ -74,6 +86,12 @@
 #start-button {
   font-size: 2.1em;
   font-weight: 200;
+}
+
+.edit-button {
+  background-color: orange;
+  height: inherit;
+  padding-top: 35px;
 }
 
 #new-card {

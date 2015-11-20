@@ -6,12 +6,14 @@
 <ion-view>
   <ion-content class='has-header'>
 
-    <h2 class='text-center font-thin' style='margin-top: 2em;'>Create Flashcard Set</h2>
+    <h2 class='text-center font-thin margin-top-med'>
+      Create Flashcard Set
+    </h2>
 
     <form name='newSet' ng-submit='vmCreateSet.createSet(vmCreateSet.set)' class='text-center col col-80 col-offset-10' novalidate>
       <div class='new-set-input'>
         <input type='text' name='title' class='text-center col col-100' placeholder='Flashcard Set Title' ng-model='vmCreateSet.set.title' ng-change='vmCreateSet.validateTitle(vmCreateSet.set.title)' autocomplete='off' required>
-        <div style='height: 20px;'>
+        <div class='error-message'>
           <p ng-show='vmCreateSet.badTitle' class='red-color'>
             Title already exists!
           </p>
@@ -20,7 +22,7 @@
       <div class='new-set-input'>
         <input type='text' name='tags' class='text-center col col-100' placeholder='Tags, i.e.: Sports, Baseball, History' ng-model='vmCreateSet.set.tags' ng-minlength='3' autocomplete='off' required>
       </div>
-      <button type='submit' id='start-button' class='button button-clear button-balanced button-large' style='margin-top: 2em;' ng-disabled='newSet.$invalid || vmCreateSet.badTitle'>
+      <button type='submit' id='start-button' class='button button-clear button-balanced button-large margin-top-med' ng-disabled='newSet.$invalid || vmCreateSet.badTitle'>
         Start
       </button>
     </div>

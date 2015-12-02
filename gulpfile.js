@@ -79,7 +79,8 @@ gulp.task('clean-css', function(cb) {
 gulp.task('inject', ['sass', 'jshint', 'copyHtmlImg'], function() {
   return gulp.src('./www/index.html')
     .pipe(inject(
-      gulp.src(['./www/**/*.js', '!./www/lib/**/*.js', './www/css/**/*.css'], {read: false}),
+      gulp.src([//'./www/**/*.js', '!./www/lib/**/*.js',
+        './www/css/**/*.css'], {read: false}),
       {relative: true}
     ))
     .pipe(gulp.dest('./www'));

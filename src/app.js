@@ -5,7 +5,13 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('know', ['ionic'])
 
-.run(($ionicPlatform, Flashcard) => {
+.run(run)
+.config(config);
+
+
+run.$inject = ['$ionicPlatform', 'Flashcard'];
+
+function run($ionicPlatform, Flashcard) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -18,9 +24,12 @@ angular.module('know', ['ionic'])
 
     Flashcard.getFromLocalStorage();
   });
-})
+}
 
-.config(($stateProvider, $urlRouterProvider) => {
+
+config.$inject = ['$stateProvider', '$urlRouterProvider'];
+
+function config($stateProvider, $urlRouterProvider) {
 
   $stateProvider
 
@@ -55,4 +64,4 @@ angular.module('know', ['ionic'])
 
   $urlRouterProvider.otherwise('/');
 
-});
+}

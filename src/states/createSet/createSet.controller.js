@@ -25,7 +25,6 @@ function CreateSetCtrl($state, Flashcard) {
   function createSetObject(set) {
     return {
       [set.title]: {
-        tags: set.tags.split(/\W*,\W*/),
         cards: []
       }
     };

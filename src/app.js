@@ -44,7 +44,7 @@ angular.module('know', ['ionic'])
 
   .state('editSet', {
     url: '/editSet/:setTitle',
-    templateUrl: 'states/editSet/editset.html',
+    templateUrl: 'states/editSet/editSet.html',
     controller: 'EditSetCtrl as vmEditSet'
   })
 

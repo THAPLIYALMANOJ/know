@@ -10,29 +10,30 @@ var gulp = require('gulp'),
     jshint = require('gulp-jshint'),
     copy = require('gulp-copy'),
     del = require('del'),
-    inject = require('gulp-inject');
+    inject = require('gulp-inject'),
+    uglify = require('gulp-uglify');
 
 var paths = {
   sass: ['./src/scss/**/*.scss'],
-  js: ['./src/**/*.js'],
+  js: ['./src/**/*.js', '!./src/lib/**/*.js'],
   html: ['./src/**/*.html'],
   all: ['./src/scss/**/*.scss', './src/**/*.js', './src/**/*.html']
 };
 
+
+
+
+// DEVELOPMENT
+
 gulp.task('default', ['inject']);
 
-gulp.task('sass', ['clean-css'], function(done) {
+gulp.task('sass', ['copy-lib', 'clean-css'], function(done) {
   gulp.src(paths.sass)
     .pipe(sass({
       errLogToConsole: true,
       outputStyle: 'expanded'
     }))
     .pipe(gulp.dest('./www/css/'))
-    // .pipe(minifyCss({
-      // keepSpecialComments: 0
-    // }))
-    // .pipe(rename({ extname: '.min.css' }))
-    // .pipe(gulp.dest('./www/css/'))
     .on('end', done);
 });
 
@@ -76,6 +77,18 @@ gulp.task('clean-css', function(cb) {
   });
 });
 
+gulp.task('copy-lib', ['remove-lib'], function() {
+  return gulp.src(['./src/lib', './src/lib/**/*'])
+    .pipe(copy('./www', { prefix: 1 }));
+});
+
+gulp.task('remove-lib', function(cb) {
+  del(['./www/lib', './www/lib/**/*']).then(function(delPaths) {
+    console.log('Library files have been removed from www directory.');
+    cb();
+  });
+});
+
 gulp.task('inject', ['sass', 'jshint', 'copyHtmlImg'], function() {
   return gulp.src('./www/index.html')
     .pipe(inject(
@@ -93,22 +106,71 @@ gulp.task('watch', ['inject'], function() {
   gulp.watch(paths.all, ['inject']);
 });
 
-gulp.task('install', ['git-check'], function() {
-  return bower.commands.install()
-    .on('log', function(data) {
-      gutil.log('bower', gutil.colors.cyan(data.id), data.message);
-    });
+
+
+
+// PRODUCTION
+
+// a mobile app cares about space but not about loading time, so I want to
+// minify CSS and JS but I don't care how about files It needs to load so
+// I don't need to concatenate files.
+// So, do all stuff that dev does but also minify CSS and minify all JS
+
+
+gulp.task('production', ['inject-prod']);
+
+gulp.task('sass-prod', ['copy-lib', 'clean-css'], function(done) {
+  gulp.src('./src/scss/**/*.scss')
+    .pipe(sass({
+      errLogToConsole: true,
+      outputStyle: 'expanded'
+    }))
+    .pipe(gulp.dest('./www/tempCss/'))
+    .on('end', done);
 });
 
-gulp.task('git-check', function(done) {
-  if (!sh.which('git')) {
-    console.log(
-      '  ' + gutil.colors.red('Git is not installed.'),
-      '\n  Git, the version control system, is required to download Ionic.',
-      '\n  Download git here:', gutil.colors.cyan('http://git-scm.com/downloads') + '.',
-      '\n  Once git is installed, run \'' + gutil.colors.cyan('gulp install') + '\' again.'
-    );
-    process.exit(1);
-  }
-  done();
+gulp.task('minify-concat-css', ['sass-prod'], function(done) {
+  gulp.src('./www/tempCss/*')
+    .pipe(concat('styles.css'))
+    .pipe(minifyCss({
+      keepSpecialComments: 0
+    }))
+    .pipe(rename({ extname: '.min.css' }))
+    .pipe(gulp.dest('./www/css/'))
+    .on('end', done);
 });
+
+gulp.task('delete-tempCss', ['minify-concat-css'], function(cb) {
+  del(['./www/tempCss']).then(function(delPaths) {
+    console.log('Deleted', delPaths);
+    cb();
+  });
+});
+
+gulp.task('inject-prod', ['delete-tempCss', 'jshint-prod', 'copyHtmlImg'], function() {
+  return gulp.src('./www/index.html')
+    .pipe(inject(
+      gulp.src([//'./www/**/*.js', '!./www/lib/**/*.js',
+        './www/css/**/*.css'], {read: false}),
+      {relative: true}
+    ))
+    .pipe(gulp.dest('./www'));
+});
+
+gulp.task('jshint-prod', ['babel-prod'], function() {
+  gulp.src(['./www/**/*.js', '!./www/lib', '!./www/lib/**/*.js'])
+    .pipe(jshint())
+    .pipe(jshint.reporter('jshint-stylish'));
+});
+
+gulp.task('babel-prod', ['clean-js'], function() {
+  gulp.src(paths.js)
+    .pipe(babel({
+      presets: ['es2015']
+    }))
+    .pipe(uglify())
+    .pipe(gulp.dest('./www'));
+});
+
+
+

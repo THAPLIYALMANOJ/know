@@ -26,8 +26,7 @@ angular.module('know', ['ionic'])
 
   .state('home', {
     url: '/',
-    templateUrl: 'states/home/home.html',
-    controller: 'HomeCtrl as vmHome'
+    templateUrl: 'states/home/home.html'
   })
 
   .state('createSet', {
